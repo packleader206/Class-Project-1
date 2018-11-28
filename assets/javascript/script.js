@@ -32,7 +32,7 @@ $(document).ready(function () {
         let whatsInTheFridgeURL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" + whatsInTheFridge + "&limitLicense=false&number=5&ranking=1";
 
         //  variable that holds a reference to the <div> id = "dinner-table"
-        let dinnerTable = $("dinner-table");
+        let dinnerTable = $("#dinner-table");
 
         // ajax call to search for recipes based on user input from the what's in the fridge form
         $.ajax({
@@ -182,7 +182,7 @@ $(document).ready(function () {
         });
 
         // dynamically creating a back button so that the user can get back to the recipes once they are reading instructions
-        let backButton = $("<button>").attr("id", "back-button").addClass("button").text("BACK-BUTTON");
+        // let backButton = $("<button>").attr("id", "back-button").addClass("button").text("BACK-BUTTON");
 
         // appending the recipeInstructions <div> to the <div> with id = "instrucitons"
         $("#button2").html(backButton);
@@ -244,37 +244,47 @@ $(document).ready(function () {
                 movieDiv.attr({
                     // Set a class on the div that can be used to hook up events
                     class: "movie-item",
-                    "data-movie-id": movie.id
+                    "data-movie-id": movie.id,
+                    "data-movie-release-date": movie.release_date
                 });
 
                 let movieTitle = $("<h4>");
                 movieTitle.text(movie.title);
 
                 movieDiv.append(movieTitle);
+
+               
                 
                 let movieImg = $("<img>");
                 movieImg.attr({
                     // Can't use shadow class here because it is used elsewhere for an event
                     class: "img-fluid img-thumbnail rounded",
                     src: IMAGE_BASE_URL + movie.poster_path,
-                    value: movie.id,
+                    value: movie.id
                 });
-                                
+
+                                               
                 movieDiv.append(movieImg);
 
                 let overviewDiv = $("<div>");
+                overviewDiv.attr("class", "movie-overview")
                 overviewDiv.text(movie.overview);
+                overviewDiv.hide();
                 movieDiv.append(overviewDiv);
 
                 movieResultsTable.append(movieDiv);
+
+              
             }
         });
 
         // When you click on a movie (".movie-item")
         $(document).on("click", ".movie-item", function() {
             let movieId = $(this).attr("data-movie-id");
+            let movieReleaseDate = $(this).attr("data-movie-release-date");
             console.log("Movie id: " + movieId);
-
+            console.log("Movie Release date: " + movieReleaseDate);
+            $(this).children(".movie-overview").toggle();
             let movieUrl = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + api_key;
             console.log(movieUrl);
             // FIXME: Do something more interesting
