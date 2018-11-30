@@ -142,6 +142,10 @@ $(document).ready(function () {
 
             // dynamically creating a new div with the recipe instructions inside of it
             let recipeInstructions = $("<p>").html(results.instructions);
+            let recipeIngredients = results.extendedIngredients;
+            console.log(recipeIngredients);
+
+
 
             // appending the recipeInstructions <div> to the <div> with id = "instrucitons"
             $("#instructions").html(recipeInstructions);
