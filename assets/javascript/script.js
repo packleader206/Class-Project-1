@@ -108,7 +108,6 @@ $(document).ready(function () {
 
         // variable set up to access data from firebase
         let newWhatsInTheFridge = childSnapshot.val().whatsInTheFridge;
-        console.log(newWhatsInTheFridge);
 
         // variable to reference firebase key (id) for each data entry
         let key = childSnapshot.key
