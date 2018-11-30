@@ -170,14 +170,14 @@ $(document).ready(function () {
                 console.log(ingredientArray);
             };
 
-            let ingredientsDisplay = document.getElementById("test1");
+            let ingredientsDisplay = document.getElementById("iDisplay");
 
             // for loop to run through ingredients stored in the "ingredientArray" & display results in HTML. 
             // currently data displayed into HTML is not working yet. It console logs fine.  Just need to resolve and get it to display into HTML
             for (var k = 0; k < ingredientArray.length; k++) {
                 console.log(ingredientArray);
 
-                test1.innerHTML += "<p>" + ingredientArray[k] + "</p><br>";
+                iDisplay.innerHTML += "<ul>" + ingredientArray[k] + "</ul><br>";
             }
         });
 
