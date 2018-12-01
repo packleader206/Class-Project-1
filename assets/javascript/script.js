@@ -58,13 +58,7 @@ $(document).ready(function () {
             beforeSend: function (request) {
                 request.setRequestHeader("X-Mashape-Key", "Opn7fgzDzImshjKftqensUuVw0XIp1SkMBQjsnfyMPrMiQydkc");
             },
-            
-            // headers: {
-            //     // 'Access-Control-Allow-Origin': '*',
-            //     // 'X-Mashape-Key': "Opn7fgzDzImshjKftqensUuVw0XIp1SkMBQjsnfyMPrMiQydkc",
-            //     // 'X-Mashape-Key': "ZpzURN2g7zmshx6acoveSs7Ys9cMp1oAziAjsn6nUbzwubliTh"
-            // },
-            
+                       
             dataType: "Json",
             method: "GET",
             url: whatsInTheFridgeURL,
@@ -89,12 +83,6 @@ $(document).ready(function () {
                 let recipeID = results[i].id;
 
                 let recipeLink = $("<a>");
-
-                //FIXME:we don't need this anymore it was annoying for me when I was testing the on click event because it kept taking me to another page and then I had to navigate back to see if the event was triggered.  Now it does, yayeah! 
-                // recipeLink.attr({
-                //     href: SITE_BASE + recipeTitle + "-" + recipeID,
-                //     target: "_blank",
-                // })
 
                 let titleText = $("<h4>").text(recipeTitle);
 
@@ -125,14 +113,8 @@ $(document).ready(function () {
         // console.log(key);
     });
 
-
-
     // When the user clicks on a specific recipe (."shadow"), run the code below
     $(document).on("click", ".shadow", function (event) {
-
-        // resetting the values so that it only shows for most recently clicked recipe FIXME: I Don't think we need these
-        // $("#wine-pairing").val("");
-        // $("#instructions").val("");
 
         // prevent the page from refreshing
         event.preventDefault();
@@ -149,10 +131,6 @@ $(document).ready(function () {
                 request.setRequestHeader("X-Mashape-Key", "Opn7fgzDzImshjKftqensUuVw0XIp1SkMBQjsnfyMPrMiQydkc");
             },
             
-            // header: {
-            //     "Access-Control-Allow-Origin": "*"
-            // },
-
             dataType: "Json",
             method: "GET",
             url: uniqueRecipeURL
@@ -173,8 +151,7 @@ $(document).ready(function () {
                 noInstructionsDisplay.addClass("text-danger");
                 console.log(noInstructions)
 
-                // FIXME: Not sure why this is not working tried .text(), .html(), and .append()... 
-                $("#instructions").append(noInstructionsDisplay);
+            $("#instructions").append(noInstructionsDisplay);
 
             // hide the <div> with id = "food"
             $("#food").hide();
@@ -214,8 +191,6 @@ $(document).ready(function () {
 
             let ingredientsDisplay = document.getElementById("test1");
 
-            // for loop to run through ingredients stored in the "ingredientArray" & display results in HTML. 
-            // currently data displayed into HTML is not working yet. It console logs fine.  Just need to resolve and get it to display into HTML
             for (var k = 0; k < ingredientArray.length; k++) {
                 console.log(ingredientArray);
 
@@ -227,17 +202,11 @@ $(document).ready(function () {
         let whatsInTheFridge = $("#ingredient-input").val().trim();
         console.log(whatsInTheFridge);
 
-        // Since the wine pairing really only wants one word this line of code takes the first word from whatsInTheFridge and stores it in a variable to be used for the wine pairing ajax call.  I actually do not know exactly how this is working and could use some explanation of the .replace method.
-        // https://stackoverflow.com/questions/18558417/get-first-word-of-string
         let firstIngredient = whatsInTheFridge.replace(/,.*/, '');
         console.log(firstIngredient);
 
         // set the wine pairing API URL to the winePairingURL variable and use the first ingredient from whatsInTheFridge for the food input of the winePairingURL so that the user is more likely to get a pairing suggestion than if we use the entire string
         let winePairingURL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=" + firstIngredient + "&maxPrice=15";
-
-        // Clear value of search input 
-        // FIXME: Nate moved this so that he could use the whatsInTheFridge variable again for the second on click event so that he could get the wine pairing returned based on the user food input 
-        // $("#ingredient-input").val("");
 
         // ajax call for wine pairing info
         $.ajax({
@@ -245,14 +214,9 @@ $(document).ready(function () {
                 request.setRequestHeader("X-Mashape-Key", "Opn7fgzDzImshjKftqensUuVw0XIp1SkMBQjsnfyMPrMiQydkc");
             },
 
-            // header: {
-            //     'Access-Control-Allow-Origin': '*'
-            // },
-
             dataType: "Json",
             method: "GET",
             url: winePairingURL
-
 
             // Once the promise is returned run the code below
         }).then(function (response) {
@@ -266,7 +230,6 @@ $(document).ready(function () {
             let errorArray = {
                 title: "Mad Dog 20/20",
                 flavors: ["Banana Red", "Dragon Fruit", "Electric Melon", "Red Grape Wine", "Habanero Lime Arita", "Orange Jubilee", "Peaches & Cream", "Strawberry Kiwi"]
-
             }
 
             function failureMessage() {
@@ -276,7 +239,6 @@ $(document).ready(function () {
 
                 let randomFlavor = Math.floor(Math.random() * errorArray.flavors["length"]);
 
-                //TODO: Under construction...will push title/flavor/image to wine pairing div upon failure, if I can get it working here it will also go in the else if statement.  Then work refactoring to reduce repeate elements (Neri)//
                 let errorImage = $("<img>");
                 errorImage.attr({
                     class: "img-fluid img-thumbnail rounded shadow",
@@ -383,25 +345,20 @@ $(document).ready(function () {
                 movieDiv.attr({
                     // Set a class on the div that can be used to hook up events
                     class: "movie-item",
-                    "data-movie-id": movie.id,
-                    "data-movie-release-date": movie.release_date
+                    // "data-movie-id": movie.id,
+                    // "data-movie-release-date": movie.release_date
                 });
 
                 let movieTitle = $("<h4>");
                 movieTitle.text(movie.title);
-
                 movieDiv.append(movieTitle);
-
-
 
                 let movieImg = $("<img>");
                 movieImg.attr({
-                    // Can't use shadow class here because it is used elsewhere for an event
                     class: "img-fluid img-thumbnail rounded",
                     src: IMAGE_BASE_URL + movie.poster_path,
-                    value: movie.id
+                    // value: movie.id
                 });
-
 
                 movieDiv.append(movieImg);
 
@@ -410,13 +367,9 @@ $(document).ready(function () {
                 overviewDiv.text(movie.overview);
                 overviewDiv.hide();
                 movieDiv.append(overviewDiv);
-
                 movieResultsTable.append(movieDiv);
-
-
             }
         });
-
       
     });
 
@@ -424,15 +377,13 @@ $(document).ready(function () {
       $(document).on("click", ".movie-item", function () {
         console.log("clicked");
         let movieId = $(this).attr("data-movie-id");
-        let movieReleaseDate = $(this).attr("data-movie-release-date");
+        // let movieReleaseDate = $(this).attr("data-movie-release-date");
         console.log("Movie id: " + movieId);
-        console.log("Movie Release date: " + movieReleaseDate);
         console.log($(this).children(".movie-overview"))
         $(this).children(".movie-overview").toggle();
         console.log("did toggle");
         let movieUrl = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + api_key;
         console.log(movieUrl);
-        // FIXME: Do something more interesting
     })
 
 });
