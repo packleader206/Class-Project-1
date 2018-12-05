@@ -17,7 +17,7 @@ This app allows the user to plan date night on a budget.  It gives the user the 
 
 ## Authors
 
-Al Young
-Nathaniel Holdsworth
-Heidi
-Neri
+- Al Young
+- Nathaniel Holdsworth
+- Heidi Jvr
+- Neri Stec
