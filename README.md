@@ -13,7 +13,7 @@ This app allows the user to plan date night on a budget.  It gives the user the 
 - JQuery
 - Firebase
 - Ajax
-- Multiple API's
+- API
 
 ## Authors
 
