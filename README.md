@@ -19,5 +19,5 @@ This app allows the user to plan date night on a budget.  It gives the user the 
 
 - Al Young
 - Nathaniel Holdsworth
-- Heidi Jvr
+- Heidi Jansen Van Rensburg
 - Neri Stec
