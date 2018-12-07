@@ -21,3 +21,9 @@ This app allows the user to plan date night on a budget.  It gives the user the 
 - Nathaniel Holdsworth
 - Heidi Jansen Van Rensburg
 - Neri Stec
+<hr>
+
+## [Click Here for a Live Demo](https://packleader206.github.io/Class-Project-1/)
+<br>
+
+<img src="https://packleader206.github.io/Class-Project-1/assets/images/eatSipChill_screenshot.png" alt="Eat, Sip & Chill App">
