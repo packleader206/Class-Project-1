@@ -15,7 +15,7 @@ This app allows the user to plan date night on a budget.  It gives the user the 
 - Ajax
 - API
 
-## Authors
+## Contributors
 
 - Al Young
 - Nathaniel Holdsworth
